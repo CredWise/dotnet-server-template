@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Plutus.Utility.DTO;
+using Plutus.Utility;
 using Sample.Client.Controllers;
 using Xunit;
 
@@ -16,7 +16,7 @@ namespace Sample.Client.Test.Controllers
         [Fact]
         public void Test_ReturnsOkResult()
         {
-            var res = _controller.Test() as OkObjectResult;
+            var res = _controller.Monitor() as OkObjectResult;
 
             Assert.IsType<OkObjectResult>(res);
             Assert.IsType<BaseResponse<object>>(res.Value);

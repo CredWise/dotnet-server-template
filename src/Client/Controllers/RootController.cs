@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using Plutus.Utility.Controller;
+using Plutus.Utility;
 
 namespace Sample.Client.Controllers
 {
     [ApiController]
     [Route("")]
-    public class RootController : BaseController
+    public class RootController : PlutusBaseController
     {
         public RootController()
         { }
 
         [HttpGet]
-        public IActionResult Test()
+        public IActionResult Monitor()
         {
             return CreateResponse();
         }
