@@ -11,12 +11,12 @@ namespace Sample.Client
 {
     public class Startup
     {
+        private IConfiguration _config { get; }
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -26,7 +26,7 @@ namespace Sample.Client
             services
                 .AddSwaggerGen(c =>
                 {
-                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample.Client", Version = "v1" });
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample", Version = "v1" });
                 })
                 .AddAPIVersioning()
                 .AddHandler();
