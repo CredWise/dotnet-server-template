@@ -6,14 +6,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Sample.Domain.csproj" />
-    <ProjectReference Include="..\Processor\Sample.Processor.csproj" />
+    <ProjectReference Include="..\Infrastructure\Sample.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
 
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Plutus.Utility" Version="0.1.9" />
+    <PackageReference Include="Plutus.Utility" Version="0.1.10" />
   </ItemGroup>
 
 </Project>
