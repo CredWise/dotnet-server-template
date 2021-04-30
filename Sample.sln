@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Client.Test", "test\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Domain.Test", "test\Domain.Test\Sample.Domain.Test.csproj", "{4F625422-C816-4062-8B1D-5612C799A775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Handler.Test", "test\Handler.Test\Sample.Handler.Test.csproj", "{6CAEF126-5DF8-4F1B-9821-F0DB7A5FE9F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Application.Test", "test\Application.Test\Sample.Application.Test.csproj", "{6CAEF126-5DF8-4F1B-9821-F0DB7A5FE9F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Processor.Test", "test\Processor.Test\Sample.Processor.Test.csproj", "{67DED9BF-A317-438C-BD8A-5E3F3AEA190B}"
 EndProject
