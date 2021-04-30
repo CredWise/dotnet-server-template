@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Client", "src\Client
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Domain", "src\Domain\Sample.Domain.csproj", "{5A2F3FD5-E74B-46EA-A0D0-EA8E15E7C844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Handler", "src\Handler\Sample.Handler.csproj", "{5EEA3221-4466-4162-A864-10A1C81883B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Application", "src\Application\Sample.Application.csproj", "{5EEA3221-4466-4162-A864-10A1C81883B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Processor", "src\Processor\Sample.Processor.csproj", "{AFF95A04-DF1A-4128-BB0A-C3CB157983C7}"
 EndProject

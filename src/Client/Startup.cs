@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Plutus.Utility;
-using Sample.Handler;
+using Sample.Application;
 
 namespace Sample.Client
 {
@@ -29,7 +29,7 @@ namespace Sample.Client
                     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample", Version = "v1" });
                 })
                 .AddAPIVersioning()
-                .AddHandler();
+                .AddApplication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
