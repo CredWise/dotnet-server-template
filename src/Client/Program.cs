@@ -23,6 +23,10 @@ namespace Sample.Client
                     webBuilder
                         .UseUrls("http://*:5000")
                         .UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 });
     }
 }
