@@ -3,49 +3,24 @@ WORKDIR /app
 EXPOSE 5000
 
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS test
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
 # COPY PROJECT
-COPY Sample.sln .
-COPY src/Client/Sample.Client.csproj src/Client/
-COPY src/Application/Sample.Application.csproj src/Application/
-COPY src/Infrastructure/Sample.Infrastructure.csproj src/Infrastructure/
-COPY src/Domain/Sample.Domain.csproj src/Domain/
-# COPY TEST
-COPY test/Client.Test/Sample.Client.Test.csproj test/Client.Test/
-COPY test/Application.Test/Sample.Application.Test.csproj test/Application.Test/
-COPY test/Infrastructure.Test/Sample.Infrastructure.Test.csproj test/Infrastructure.Test/
+COPY . .
 # RESTORE PROJECTS
 RUN dotnet restore
 
-# COPY OTHER FILES INTO PROJECT
-COPY src/Client/ src/Client/
-COPY src/Application/ src/Application/
-COPY src/Infrastructure/ src/Infrastructure/
-COPY src/Domain/ src/Domain/
 
-COPY test/Client.Test/ test/Client.Test/
-COPY test/Application.Test/ test/Application.Test/
-COPY test/Infrastructure.Test/ test/Infrastructure.Test/
-
-# RUN TEST
+FROM build AS test
+WORKDIR /src
 RUN dotnet test
 
 
-FROM test AS build
-WORKDIR /src
-
-COPY --from=test /app/src/Client/ Client/
-COPY --from=test /app/src/Application/ Application/
-COPY --from=test /app/src/Infrastructure/ Infrastructure/
-COPY --from=test /app/src/Domain/ Domain/
-
-
 FROM build AS publish
-RUN dotnet publish /src/Client/Sample.Client.csproj -c Release -o /app/publish
+RUN dotnet publish src/Presentation/Presentation.csproj -c Release -o /app/publish
 
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Sample.Client.dll"]
+ENTRYPOINT ["dotnet", "Presentation.dll"]
