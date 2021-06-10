@@ -5,9 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plutus.Utility;
 using Sample.Application;
-using Sample.Client.Extensions;
+using Sample.Infrastructure;
+using Sample.Presentation.Extensions;
 
-namespace Sample.Client
+namespace Sample.Presentation
 {
     public class Startup
     {
@@ -36,7 +37,8 @@ namespace Sample.Client
             services
                 .AddSwagger()
                 .AddAPIVersioning()
-                .AddApplication();
+                .AddApplication(_config)
+                .AddInfrastructure(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

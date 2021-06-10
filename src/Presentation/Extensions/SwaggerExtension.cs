@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Sample.Client.Extensions
+namespace Sample.Presentation.Extensions
 {
     public static class SwaggerExtension
     {
