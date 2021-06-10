@@ -16,3 +16,7 @@ Please see [Installation](/Documentation/Installation.md#software)
 
 Please see [Server](/Documentation/Installation.md#setup)
 Please see [Docker Image](/Documentation/Installation.md#docker)
+
+Note: Any of these instructions not followed will result to PR being rejected or code reversed.
+
+Happy coding 😊

@@ -16,5 +16,3 @@ Note: do **NOT** add production values to `appsettings.json.dist`. It will be ad
 ## <a name="docker"></a>Docker Image
 
 Run `./build.sh` to build the docker image.
-
-Now you can start the server. Happy coding 😊
