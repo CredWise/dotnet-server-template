@@ -19,7 +19,7 @@ namespace Sample.Presentation.Test.Controllers
             var res = _controller.Server() as OkObjectResult;
 
             Assert.IsType<OkObjectResult>(res);
-            Assert.IsType<BaseResponse<object>>(res.Value);
+            Assert.IsType<BaseResponse>(res.Value);
         }
     }
 }

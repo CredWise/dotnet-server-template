@@ -12,7 +12,7 @@
 
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Plutus.Utility" Version="0.1.10" />
+    <PackageReference Include="Plutus.Utility" Version="0.1.13" />
   </ItemGroup>
 
 </Project>

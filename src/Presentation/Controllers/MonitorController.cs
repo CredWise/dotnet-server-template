@@ -6,10 +6,7 @@ namespace Sample.Presentation.Controllers
 {
     [ApiController]
     [Route("")]
-    [ProducesResponseType(typeof(BaseResponse<object>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
-
+    [ProducesResponseType(typeof(BaseResponse), StatusCodes.Status200OK)]
     public class MonitorController : PlutusBaseController
     {
         public MonitorController()
