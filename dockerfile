@@ -12,15 +12,13 @@ RUN dotnet restore
 
 
 FROM build AS test
-WORKDIR /src
 RUN dotnet test
 
 
 FROM build AS publish
-RUN dotnet publish src/Presentation/Presentation.csproj -c Release -o /app/publish
+RUN dotnet publish src/Presentation/Presentation.csproj -c Release -o /app/publish -f net5.0
 
 
 FROM base AS final
-WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Presentation.dll"]

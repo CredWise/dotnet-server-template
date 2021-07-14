@@ -1,1 +1,1 @@
-docker build -t credwise/sample .
+docker build -t credwise/sample:dev .
