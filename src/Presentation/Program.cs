@@ -21,7 +21,6 @@ namespace Sample.Presentation
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder
-                        .UseUrls("http://*:5000")
                         .UseStartup<Startup>();
                 })
                 .ConfigureAppConfiguration((hostingContext, config) =>
