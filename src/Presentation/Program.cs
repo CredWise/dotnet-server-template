@@ -22,10 +22,6 @@ namespace Sample.Presentation
                 {
                     webBuilder
                         .UseStartup<Startup>();
-                })
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 });
     }
 }
