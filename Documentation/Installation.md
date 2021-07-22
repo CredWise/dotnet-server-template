@@ -16,3 +16,5 @@ Note: do **NOT** add production values to `appsettings.json.dist`. It will be ad
 ## <a name="docker"></a>Docker Image
 
 Run `./build.sh` to build the docker image on your local machine or run `docker pull ghcr.io/credwise/dotnet-server-template:main` for the latest official release
+
+Docker images are tagged based on branch name, _main_, _qa_, and _dev_;
