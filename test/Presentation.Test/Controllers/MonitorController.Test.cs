@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Plutus.Utility;
-using Sample.Presentation.Controllers;
+using Presentation.Controllers;
 using Xunit;
 
-namespace Sample.Presentation.Test.Controllers
+namespace Presentation.Test.Controllers
 {
     public class MonitorControllerTest
     {

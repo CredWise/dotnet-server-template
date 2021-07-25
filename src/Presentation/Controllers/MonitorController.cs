@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Plutus.Utility;
 
-namespace Sample.Presentation.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("")]

@@ -1,10 +1,10 @@
 using System.Reflection;
+using Application.Common.Behaviours;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sample.Application.Common.Behaviours;
 
-namespace Sample.Application
+namespace Application
 {
     public static class DependencyInjection
     {

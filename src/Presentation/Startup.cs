@@ -1,14 +1,15 @@
+using Application;
+using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plutus.Utility;
-using Sample.Application;
-using Sample.Infrastructure;
-using Sample.Presentation.Extensions;
+using Presentation.Extensions;
 
-namespace Sample.Presentation
+namespace Presentation
 {
     public class Startup
     {
@@ -47,6 +48,10 @@ namespace Sample.Presentation
             if (env.IsDevelopment()) app.UseSwaggerMiddleware();
 
             app
+                .UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                })
                 .UseCors()
                 .UseCustomExceptionHandler()
                 .UseRouting()
