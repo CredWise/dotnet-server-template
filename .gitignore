@@ -10,6 +10,7 @@
 **/.vscode/
 **/appsettings.Development.json
 **/appsettings.json
+**/logs/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
