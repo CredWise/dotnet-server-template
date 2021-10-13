@@ -6,5 +6,13 @@
       "Microsoft.Hosting.Lifetime": "Information"
     }
   },
-  "AllowedHosts": "*"
+
+  "AllowedHosts": "*",
+
+  "SwaggerOption": {
+    "ShowSwagger": true,
+    "Title": "Sample",
+    "Endpoint": "/swagger.json",
+    "Versions": ["v1"]
+  },
 }

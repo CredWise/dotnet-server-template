@@ -34,32 +34,34 @@ namespace Presentation
                 });
             });
 
-            services.AddControllers();
-            services
-                .AddSwagger()
-                .AddAPIVersioning()
-                .AddApplication(_config)
-                .AddInfrastructure(_config);
+            services.AddControllers(x =>
+                    {
+                        x.Filters.Add<ValidationFilter>();
+                    })
+                    .AddJsonOptions();
+
+            services.AddSwagger(_config)
+                    .AddAPIVersioning()
+                    .AddApplication(_config)
+                    .AddInfrastructure(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment()) app.UseSwaggerMiddleware();
-
-            app
-                .UseForwardedHeaders(new ForwardedHeadersOptions
-                {
-                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-                })
-                .UseCors()
-                .UseCustomExceptionHandler()
-                .UseRouting()
-                .UseAuthorization()
-                .UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                });
+            app.UseSwaggerMiddleware(_config)
+               .UseForwardedHeaders(new ForwardedHeadersOptions
+               {
+                   ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+               })
+               .UseCors()
+               .UseCustomExceptionHandler()
+               .UseRouting()
+               .UseAuthorization()
+               .UseEndpoints(endpoints =>
+               {
+                   endpoints.MapControllers();
+               });
         }
     }
 }
