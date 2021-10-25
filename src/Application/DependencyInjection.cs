@@ -10,9 +10,11 @@ namespace Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
-            return services
-                    .AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>))
+            services
+                    .AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceAndIpBehaviour<,>))
                     .AddMediatR(Assembly.GetExecutingAssembly());
+
+            return services;
         }
     }
 }

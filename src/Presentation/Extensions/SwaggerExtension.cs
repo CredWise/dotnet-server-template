@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
@@ -13,21 +14,26 @@ namespace Presentation.Extensions
     {
         public static IServiceCollection AddSwagger(this IServiceCollection service, IConfiguration configuration)
         {
-            var swaggerOption = new SwaggerOption();
+            SwaggerOption swaggerOption = new();
+
             configuration.GetSection(nameof(SwaggerOption)).Bind(swaggerOption);
 
-            return service
-                .AddSwaggerGen(c =>
-                {
-                    foreach (var version in swaggerOption.Versions) c.SwaggerDoc(version, new OpenApiInfo { Title = swaggerOption.Title, Version = version });
+            service
+               .AddSwaggerGen(c =>
+               {
+                   IList<string>? versions = swaggerOption.Versions;
+                   if (versions != null && versions.Count > 0)
+                       foreach (var version in versions) c.SwaggerDoc(version, new OpenApiInfo { Title = swaggerOption?.Title, Version = version });
 
-                    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-                });
+                   c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+               });
+
+            return service;
         }
 
         public static IApplicationBuilder UseSwaggerMiddleware(this IApplicationBuilder app, IConfiguration configuration)
         {
-            var swaggerOption = new SwaggerOption();
+            SwaggerOption swaggerOption = new();
             configuration.GetSection(nameof(SwaggerOption)).Bind(swaggerOption);
 
             if (!swaggerOption.ShowSwagger) return app;
