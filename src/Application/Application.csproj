@@ -4,16 +4,18 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>true</WarningsAsErrors>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="/Users/3faces/Documents/Code/credwise/libraries/Plutus.Utility/src/Plutus.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Plutus.Utility" Version="0.1.13" />
+    <!-- <PackageReference Include="Plutus.Utility" Version="0.1.13" /> -->
   </ItemGroup>
 
 </Project>

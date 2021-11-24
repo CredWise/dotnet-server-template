@@ -5,63 +5,60 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Plutus.Utility;
 using Presentation.Extensions;
 
-namespace Presentation
+namespace Presentation;
+public class Startup
 {
-    public class Startup
+    private IConfiguration _config { get; }
+
+    public Startup(IConfiguration configuration)
     {
-        private IConfiguration _config { get; }
+        _config = configuration;
+    }
 
-        public Startup(IConfiguration configuration)
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddCors(options =>
         {
-            _config = configuration;
-        }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddCors(options =>
+            options.AddDefaultPolicy(builder =>
             {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowAnyOrigin();
-                });
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
             });
+        });
 
-            services.AddControllers(x =>
-                    {
-                        x.Filters.Add<ValidationFilter>();
-                    })
-                    .AddJsonOptions();
+        services.AddControllers(x =>
+                {
+                    x.Filters.Add<ValidationFilter>();
+                })
+                .AddJsonOptions();
 
-            services.AddSwagger(_config)
-                    .AddAPIVersioning()
-                    .AddApplication(_config)
-                    .AddInfrastructure(_config);
-        }
+        services.AddSwagger(_config)
+                .AddAPIVersioning()
+                .AddApplication(_config)
+                .AddInfrastructure(_config);
+    }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseSwaggerMiddleware(_config)
-               .UseForwardedHeaders(new ForwardedHeadersOptions
-               {
-                   ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-               })
-               .UseCors()
-               .UseCustomExceptionHandler()
-               .UseRouting()
-               .UseAuthorization()
-               .UseEndpoints(endpoints =>
-               {
-                   endpoints.MapControllers();
-               });
-        }
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.UseSwaggerMiddleware(_config)
+           .UseForwardedHeaders(new ForwardedHeadersOptions
+           {
+               ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+           })
+           .UseCors()
+           .UseCustomExceptionHandler()
+           .UseRouting()
+           .UseAuthorization()
+           .UseEndpoints(endpoints =>
+           {
+               endpoints.MapControllers();
+           });
     }
 }
